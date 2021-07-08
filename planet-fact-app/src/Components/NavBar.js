@@ -8,6 +8,10 @@ import {
 import { Component } from "react";
 
 export default class NavBar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     planets: [
       "mercury",
@@ -39,7 +43,7 @@ export default class NavBar extends Component {
         </TitleWrapper>
         <NavOptionWrapper open={this.state.navOpen}>
           {this.state.planets.map((el) => (
-            <li key={el}>
+            <li key={el} id={el} onClick={this.props.changePlanet}>
               <a href="#">
                 <NavSpan color={el}></NavSpan>
                 <h2>{el}</h2>

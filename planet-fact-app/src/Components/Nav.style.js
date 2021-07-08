@@ -15,8 +15,6 @@ export const NavWrapper = styled.nav`
 `;
 
 export const NavButton = styled.button`
-  @import url("https://fonts.googleapis.com/css2?family=Antonio:wght@500&family=Spartan:wght@400;700&display=swap");
-
   --light-gray: hsl(240, 6%, 54%);
 
   background: transparent;
@@ -72,8 +70,7 @@ export const NavOptionWrapper = styled.ul`
   --neptune: hsl(169, 73%, 44%);
 
   background-color: var(--background-blue);
-  /* border-top: 1px solid var(--light-gray); */
-  color: #fff;
+  color: var(--white);
   list-style: none;
   margin: auto;
   max-height: ${(props) => (props.open ? "100%" : "0")};
