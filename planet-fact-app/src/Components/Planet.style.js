@@ -1,20 +1,51 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const PlanetWrapper = styled.div`
-  min-height: 30rem;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-`;
-
-export const PlanetImage = styled.img`
-  transform: scale(0.384);
+  /* display: flex;
+  flex-direction: row; */
+  grid-area: planet;
+  height: 304px;
+  width: 100%;
+  position: relative;
 
   @media screen and (min-width: 768px) {
-    transform: scale(0.633);
+    height: 460px;
   }
 
   @media screen and (min-width: 1024px) {
-    transform: scale(1);
+    height: 754px;
   }
+`;
+
+export const PlanetImage = styled.img`
+  position: absolute;
+  transform: scale(0.384) translate(-50%, -50%);
+  transform-origin: 0 0;
+  left: 50%;
+  top: 50%;
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    transform: scale(0.633) translate(-50%, -50%);
+    transform-origin: 0 0;
+    left: 50%;
+    top: 50%;
+  }
+
+  @media screen and (min-width: 1024px) {
+    position: absolute;
+    transform: scale(1) translate(-50%, -50%);
+    transform-origin: 0 0;
+    left: 50%;
+    top: 50%;
+  }
+`;
+
+export const GeologyImage = styled.img`
+  display: ${(props) => (props.geologyActive ? `inline-block` : "none")};
+  height: 33%;
+  left: 50%;
+  position: absolute;
+  top: 78%;
+  transform: translate(-50%, -50%);
 `;

@@ -3,6 +3,8 @@ import NavBar from "./Components/NavBar";
 import ContentSelection from "./Components/ContentSelection";
 import Content from "./Components/Content";
 import Planet from "./Components/Planet";
+import FactCards from "./Components/FactCards";
+import { ContentLayout } from "./Components/ContentLayout.style";
 
 const planetData = require("./data.json");
 
@@ -19,21 +21,31 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar changePlanet={this.changePlanet} />
-        <ContentSelection
-          changeContent={this.changeContent}
-          currentContent={this.state.currentContent}
-          currentPlanet={this.state.currentPlanet}
-        />
-        <Planet image={this.state.currentContentImage} />
-        <Content
-          currentPlanet={this.state.currentPlanet}
-          currentContentText={this.state.currentContentText}
-          currentContentLink={this.state.currentContentLink}
-        />
+        <ContentLayout>
+          <ContentSelection
+            changeContent={this.changeContent}
+            currentContent={this.state.currentContent}
+            currentPlanet={this.state.currentPlanet}
+          />
+          <Planet
+            image={this.state.currentContentImage}
+            geologyImage={this.state.geologyImage}
+            geologyActive={this.state.geologyActive}
+          />
+          <Content
+            currentPlanet={this.state.currentPlanet}
+            currentContentText={this.state.currentContentText}
+            currentContentLink={this.state.currentContentLink}
+          />
+        </ContentLayout>
+        <FactCards planetData={this.state.currentPlanetData} />
       </div>
     );
   }
-
+  /* 
+    change planets
+      set state to 'overview'
+  */
   changePlanet = (e) => {
     const currentPlanet = e.target.closest("li").id;
 
@@ -45,17 +57,28 @@ class App extends Component {
     const currentContentImage = currentPlanetData.images.planet;
     const currentContentLink = currentPlanetData.overview.source;
     const currentContentText = currentPlanetData.overview.content;
+    const geologyImage = currentPlanetData.images.geology;
+    const geologyActive = false;
 
-    this.setState({
-      currentPlanet,
-      currentPlanetData,
-      currentContentImage,
-      currentContent: "overview",
-      currentContentText,
-      currentContentLink,
-    });
+    this.setState(
+      {
+        currentPlanet,
+        currentPlanetData,
+        currentContentImage,
+        geologyImage,
+        geologyActive,
+        currentContent: "overview",
+        currentContentText,
+        currentContentLink,
+      },
+      () => console.log(this.state.currentPlanetData)
+    );
   };
 
+  /* 
+    change state for current planet
+      image, content picker, content description, link and fact-cards
+  */
   changeContent = (e) => {
     const currentContent = e.target.id;
 
@@ -63,6 +86,7 @@ class App extends Component {
     let currentContentImage = "";
     let currentContentText = "";
     let currentContentLink = "";
+    let geologyActive = false;
 
     switch (currentContent) {
       case "overview":
@@ -78,9 +102,10 @@ class App extends Component {
         break;
 
       case "surface":
-        currentContentImage = currentPlanetData.images.geology;
+        currentContentImage = currentPlanetData.images.planet;
         currentContentText = currentPlanetData.geology.content;
         currentContentLink = currentPlanetData.geology.source;
+        geologyActive = true;
     }
 
     this.setState({
@@ -88,6 +113,7 @@ class App extends Component {
       currentContentImage,
       currentContentText,
       currentContentLink,
+      geologyActive,
     });
   };
 }

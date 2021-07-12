@@ -23,10 +23,12 @@ export const ContentSelectionWrapper = styled.ul`
   margin: 0;
   padding: 0;
   border-bottom: 1px solid var(--light-gray);
+  grid-area: buttons;
 
   @media screen and (min-width: 768px) {
     flex-direction: column;
     border: none;
+    justify-content: center;
     gap: 1.6rem;
   }
 `;
@@ -74,7 +76,7 @@ export const ContentButton = styled.button`
   background-color: transparent;
   border: none;
   font-family: "Spartan", sans-serif;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   letter-spacing: 1.25px;
   font-weight: 700;
   padding: 2rem 0 1.6rem 0;
@@ -94,6 +96,10 @@ export const ContentButton = styled.button`
     span {
       display: inline-block;
       padding: 0 2rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 1.1rem;
     }
   }
 `;
