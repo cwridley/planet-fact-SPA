@@ -44,11 +44,11 @@ export default class NavBar extends Component {
         <NavOptionWrapper open={this.state.navOpen}>
           {this.state.planets.map((el) => (
             <li key={el} id={el} onClick={this.props.changePlanet}>
-              <a href="#">
+              <button>
                 <NavSpan color={el}></NavSpan>
                 <h2>{el}</h2>
                 <img src="./icon-chevron.svg" alt=""></img>
-              </a>
+              </button>
             </li>
           ))}
         </NavOptionWrapper>

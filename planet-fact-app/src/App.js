@@ -42,6 +42,7 @@ class App extends Component {
       </div>
     );
   }
+
   /* 
     change planets
       set state to 'overview'
@@ -60,19 +61,16 @@ class App extends Component {
     const geologyImage = currentPlanetData.images.geology;
     const geologyActive = false;
 
-    this.setState(
-      {
-        currentPlanet,
-        currentPlanetData,
-        currentContentImage,
-        geologyImage,
-        geologyActive,
-        currentContent: "overview",
-        currentContentText,
-        currentContentLink,
-      },
-      () => console.log(this.state.currentPlanetData)
-    );
+    this.setState({
+      currentPlanet,
+      currentPlanetData,
+      currentContentImage,
+      geologyImage,
+      geologyActive,
+      currentContent: "overview",
+      currentContentText,
+      currentContentLink,
+    });
   };
 
   /* 
