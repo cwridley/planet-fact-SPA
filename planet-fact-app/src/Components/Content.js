@@ -9,7 +9,12 @@ export default class Content extends Component {
   render() {
     return (
       <ContentWrapper>
-        <h2>{this.props.currentPlanet.toUpperCase()}</h2>
+        <h2>
+          {this.props.currentPlanet
+            ? this.props.currentPlanet[0].toUpperCase() +
+              this.props.currentPlanet.slice(1)
+            : null}
+        </h2>
         <p>{this.props.currentContentText}</p>
         <span>
           Source:{" "}

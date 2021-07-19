@@ -6,6 +6,7 @@ import {
   NavSpan,
 } from "./Nav.style";
 import { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -44,11 +45,11 @@ export default class NavBar extends Component {
         <NavOptionWrapper open={this.state.navOpen}>
           {this.state.planets.map((el) => (
             <li key={el} id={el} onClick={this.props.changePlanet}>
-              <button>
+              <Link to={el[0].toUpperCase() + el.slice(1)}>
                 <NavSpan color={el}></NavSpan>
                 <h2>{el}</h2>
                 <img src="./icon-chevron.svg" alt=""></img>
-              </button>
+              </Link>
             </li>
           ))}
         </NavOptionWrapper>

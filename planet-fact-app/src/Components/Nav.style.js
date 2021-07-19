@@ -85,7 +85,7 @@ export const NavOptionWrapper = styled.ul`
     padding: 2rem 0;
   }
 
-  /* a {
+  a {
     align-items: center;
     background-color: var(--background-blue);
     display: flex;
@@ -93,7 +93,7 @@ export const NavOptionWrapper = styled.ul`
     justify-content: space-between;
     text-decoration: none;
     width: 100%;
-  } */
+  }
 
   button {
     align-items: center;
